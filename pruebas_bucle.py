@@ -1,39 +1,46 @@
 numero = "3962"
 
 def algoritmo(numero):
-	numero = [str(numero[0]), str(numero[1]), str(numero[2]), str(numero[3])]
 
-	listaCopia = numero[:]
-	listAux = []
+    numdiferencia = 0
 
-	numeromenor = sorted(numero)
+    while numdiferencia != 6174:
+        numero = [str(numero[0]), str(numero[1]), str(numero[2]), str(numero[3])]
 
-	for i in range(len(numero)):
-		aux = 0
-		aux = max(listaCopia)
-		listAux.append(aux)
-		listaCopia.remove(aux)
+        listaCopia = numero[:]
+        listAux = []
 
-	print(listAux)
+        numeromenor = sorted(numero)
 
-	num = ""
-	nummenor = ""
-	nummayor = ""
+        for i in range(len(numero)):
+            aux = 0
+            aux = max(listaCopia)
+            listAux.append(aux)
+            listaCopia.remove(aux)
 
-	for i in range(len(numero)):
-		num = num + numero[i]
-		nummenor = nummenor + numeromenor[i]
-		nummayor = nummayor + listAux[i]
+        print(listAux)
 
-	num = int(num)
-	nummenor = int(nummenor)
-	nummayor = int(nummayor)
+        num = ""
+        nummenor = ""
+        nummayor = ""
 
-	numdiferencia = nummayor - nummenor
+        for i in range(len(numero)):
+            num = num + numero[i]
+            nummenor = nummenor + numeromenor[i]
+            nummayor = nummayor + listAux[i]
 
-	print(num)
-	print(nummayor)
-	print(nummenor)
-	print(numdiferencia)
+        num = int(num)
+        nummenor = int(nummenor)
+        nummayor = int(nummayor)
+
+        numdiferencia = nummayor - nummenor
+
+        numero = str(numdiferencia)
+
+        print(num)
+        print(nummayor)
+        print(nummenor)
+        print(numdiferencia)
+        print("")
 
 algoritmo(numero)
