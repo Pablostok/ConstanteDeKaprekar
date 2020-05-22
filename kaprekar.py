@@ -1,6 +1,9 @@
 numero = "3962"
 
 def algoritmo(numero):
+	numprincipal = numero
+
+	cont = 0
 
 	numdiferencia = 0
 
@@ -17,8 +20,6 @@ def algoritmo(numero):
 			aux = max(listaCopia)
 			listAux.append(aux)
 			listaCopia.remove(aux)
-
-		print(listAux)
 
 		num = ""
 		nummenor = ""
@@ -39,10 +40,9 @@ def algoritmo(numero):
 		if len(numero) != 4:
 			numero =  "0" + numero
 
-		print(num)
-		print(nummayor)
-		print(nummenor)
-		print(numdiferencia)
-		print("")
+		cont = cont + 1
+
+
+	print("El número de iteraciones para el número " + numprincipal + " es: " + str(cont))
 
 algoritmo(numero)
