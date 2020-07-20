@@ -1,6 +1,20 @@
-numero = "3962"
+lista_numeros = []
+lista_salida = []
+
+
+
+ruta = '/home/pablostok/Documentos/FicherosKaprekar/'
+
+with open(ruta + "entrada.txt", 'r') as reader:
+    for line in reader:
+        lista_numeros.append(line)
+
+leido = len(lista_numeros)
 
 def algoritmo(numero):
+    numprincipal = numero
+
+    cont = 0
 
     numdiferencia = 0
 
@@ -18,8 +32,6 @@ def algoritmo(numero):
             listAux.append(aux)
             listaCopia.remove(aux)
 
-        print(listAux)
-
         num = ""
         nummenor = ""
         nummayor = ""
@@ -34,13 +46,26 @@ def algoritmo(numero):
         nummayor = int(nummayor)
 
         numdiferencia = nummayor - nummenor
-
         numero = str(numdiferencia)
 
-        print(num)
-        print(nummayor)
-        print(nummenor)
-        print(numdiferencia)
-        print("")
+        if len(numero) != 4:
+            numero = "0" + numero
 
-algoritmo(numero)
+        cont = cont + 1
+
+    valor_fichero = "El número de iteraciones para el número " + numprincipal + " es: " + str(cont)
+
+    print(valor_fichero)
+
+    lista_salida.append(valor_fichero)
+
+for i in range(0, leido):
+    algoritmo(lista_numeros[i])
+
+
+salida = open(ruta + "salida.txt", "a")
+
+for i in range(0, leido):
+    salida.write(lista_salida[i] + "\n")
+
+salida.close()
