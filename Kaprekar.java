@@ -92,5 +92,4 @@ class Kaprekar {
     System.out.println(numdiferencia);
     //-------------------------------------------------------------
   }
-
 }
