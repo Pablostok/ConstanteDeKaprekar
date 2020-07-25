@@ -22,41 +22,53 @@ class Kaprekar {
 
     List<String> numeromenor = new ArrayList<String>();
 
-    int aux = 0, auxL = 0;
-    String auxlista = "", auxstr = "";
+    int auxL = 0, numero_menor_int = 0, numero_mayor_int = 0;
+    String auxlista = "";
 
     //-------------------------------------------------------------Llenado numeromenor (Ordenado menor-mayor)
+    String numero_menor = "";
+    int leidoCopia = listaCopia.size();
+
     for(int i = 0; i <= leido - 1; i++){
-      auxlista = listaCopia.get(i);
-      auxL = Integer.parseInt(auxlista);
+      for(int k = 0; k <= leidoCopia - 1; k++){
+        leidoCopia = listaCopia.size();
+        numero_menor = listaCopia.get(0);
+        numero_menor_int = Integer.parseInt(numero_menor);
+        auxlista = listaCopia.get(k);
+        auxL = Integer.parseInt(auxlista);
 
-      if(auxL < aux){
-          aux = auxL;
+        if (auxL < numero_menor_int){
+          numero_menor_int = auxL;
+        }
       }
-    }
-
-    for(int i = 0; i <= leido - 1; i++){ 
-      auxstr= Integer.toString(aux);
-      numeromenor.add(auxstr);
-      listaCopia.remove(auxstr);
+      numeromenor.add(Integer.toString(numero_menor_int));
+      listaCopia.remove(Integer.toString(numero_menor_int));
     }
     //-------------------------------------------------------------
-
+    
+    //Llenado de listaCopia
+    for(int i = 0; i <= leido - 1; i++){
+      listaCopia.add(numero.get(i));
+    }
     
     //-------------------------------------------------------------Llenado numeromayor (Ordenado mayor-menor)
+    String numero_mayor = "";
+    leidoCopia = listaCopia.size();
+
     for(int i = 0; i <= leido - 1; i++){
-      auxlista = listaCopia.get(i);
-      auxL = Integer.parseInt(auxlista);
+      for(int k = 0; k <= leidoCopia - 1; k++){
+        leidoCopia = listaCopia.size();
+        numero_mayor = listaCopia.get(0);
+        numero_mayor_int = Integer.parseInt(numero_mayor);
+        auxlista = listaCopia.get(k);
+        auxL = Integer.parseInt(auxlista);
 
-      if(auxL > aux){
-          aux = auxL;
+        if (auxL > numero_mayor_int){
+          numero_mayor_int = auxL;
+        }
       }
-    }
-
-    for(int i = 0; i <= leido - 1; i++){ 
-      auxstr= Integer.toString(aux);
-      numeromayor.add(auxstr);
-      listaCopia.remove(auxstr);
+      numeromayor.add(Integer.toString(numero_mayor_int));
+      listaCopia.remove(Integer.toString(numero_mayor_int));
     }
     //-------------------------------------------------------------
 
