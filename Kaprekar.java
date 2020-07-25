@@ -14,53 +14,71 @@ class Kaprekar {
     
     List<String> listaCopia = new ArrayList<String>();
     //Llenado de listaCopia
-    for(int i = 0; i <= leido; i++){
+    for(int i = 0; i <= leido - 1; i++){
       listaCopia.add(numero.get(i));
     }
 
-    List<String> listaAux = new ArrayList<String>();
+    List<String> numeromayor = new ArrayList<String>();
 
     List<String> numeromenor = new ArrayList<String>();
 
-    int aux = 0;
+    int aux = 0, auxL = 0;
+    String auxlista = "", auxstr = "";
 
-    //Ordenado numeromenor FALTA
+    //-------------------------------------------------------------Llenado numeromenor (Ordenado menor-mayor)
+    for(int i = 0; i <= leido - 1; i++){
+      auxlista = listaCopia.get(i);
+      auxL = Integer.parseInt(auxlista);
 
-    for(int i = 0; i <= leido; i++){
-        String auxlista = listaCopia.get(i);
-        int auxL = Integer.parseInt(auxlista);
-
-        if(auxL > aux){
-            aux = auxL;
-        }
-
+      if(auxL < aux){
+          aux = auxL;
+      }
     }
 
-    for(int i = 0; i <= leido; i++){ 
-      listaAux.add(aux);
-      listaCopia.remove(aux);
+    for(int i = 0; i <= leido - 1; i++){ 
+      auxstr= Integer.toString(aux);
+      numeromenor.add(auxstr);
+      listaCopia.remove(auxstr);
     }
+    //-------------------------------------------------------------
+
     
-    String num = "";
-    String num_mayor = "";
-    String num_menor = "";
+    //-------------------------------------------------------------Llenado numeromayor (Ordenado mayor-menor)
+    for(int i = 0; i <= leido - 1; i++){
+      auxlista = listaCopia.get(i);
+      auxL = Integer.parseInt(auxlista);
+
+      if(auxL > aux){
+          aux = auxL;
+      }
+    }
+
+    for(int i = 0; i <= leido - 1; i++){ 
+      auxstr= Integer.toString(aux);
+      numeromayor.add(auxstr);
+      listaCopia.remove(auxstr);
+    }
+    //-------------------------------------------------------------
+
+    //-------------------------------------------------------------Llenado nuevos String para los números mayor y menor
+    String num = "", num_mayor = "", num_menor = "";
     
-    for(int i = 0; i <= leido; i++){
+    for(int i = 0; i <= leido - 1; i++){
       num = num + numero.get(i);
       num_menor = num_menor + numeromenor.get(i);
-      num_mayor = num_mayor + listaAux.get(i);
+      num_mayor = num_mayor + numeromayor.get(i);
     }
-    
-    int num_ = Integer.parseInt(num);
-    int nummenor = Integer.parseInt(num_menor);
-    int nummayor = Integer.parseInt(num_mayor);
-    
+    //-------------------------------------------------------------
+
+    //-------------------------------------------------------------Pasado de los String a los Int para realizar operación
+    int num_ = Integer.parseInt(num), nummenor = Integer.parseInt(num_menor), nummayor = Integer.parseInt(num_mayor);
     int numdiferencia = nummayor - nummenor;
     
     System.out.println(num_);
     System.out.println(nummayor);
     System.out.println(nummenor);
     System.out.println(numdiferencia);
+    //-------------------------------------------------------------
   }
 
 }
